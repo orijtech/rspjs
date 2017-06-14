@@ -95,7 +95,6 @@ Resp.prototype.initSocket = function(initialSearchTerm) {
     if (!this.socket)
       console.log('failed to connect :(');
   }
-  console.log('initSocket ', this.socket);
 
   this.connected = false;
   this.uid = '';
