@@ -13,7 +13,7 @@ function Resp(params) {
   this.uid = params.uid || '';
   this.services = params.services || {};
   timeoutWaitMillis = params.timeoutWaitMillis || 3000;
-  this.maxTypingPeriodMs = 90;
+  this.maxTypingPeriodMs = 30;
 
   this.onMessage = params.onMessage;
   if (typeof this.onMessage !== 'function')
@@ -95,7 +95,6 @@ Resp.prototype.initSocket = function(initialSearchTerm) {
     if (!this.socket)
       console.log('failed to connect :(');
   }
-  console.log('initSocket ', this.socket);
 
   this.connected = false;
   this.uid = '';
@@ -133,7 +132,6 @@ Resp.prototype.initSocket = function(initialSearchTerm) {
   // Reconnection handler.
   resp.socket.addEventListener('close', function() {
     resp.connected = false;
-    // console.log('resp.disconnected!');
     if (typeof resp.onDisconnected === 'function')
       resp.onDisconnected();
 
